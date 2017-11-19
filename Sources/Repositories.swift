@@ -107,20 +107,6 @@ extension Plan {
     }
 }
 
-final class Scheduler {
-    var plans: [Plan] = []
-    var assetLocator: AssetLocator
-
-    init(assetLocator: AssetLocator, plans: [Plan]) {
-        self.assetLocator = assetLocator
-        self.plans = plans
-    }
-
-    private func update(for plan: Plan) -> Operation? {
-        return plan.makeUpdate(assetLocator)
-    }
-}
-
 final class Plan: Codable {
     var name: String
     var repository: Repository
@@ -230,16 +216,13 @@ struct AssetLocator {
     let prefix: String
     let repository: URL
 
-    init?(plan: Plan) {
-        self.init(prefix: plan.name)
+    init(root: URL, plan: Plan) {
+        self.init(root: root, prefix: plan.name)
     }
 
-    init?(prefix: String) {
+    init(root: URL, prefix: String) {
         self.prefix = prefix
-        guard let repository = URL(string: "~/\(prefix)/Repository") else {
-            return nil
-        }
-        self.repository = repository
+        self.repository = root.appendingPathComponent(prefix).appendingPathComponent("Repository")
     }
 }
 

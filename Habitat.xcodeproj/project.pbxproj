@@ -20,6 +20,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F3AD2071FC23865002E5B04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3AD2061FC23865002E5B04 /* App.swift */; };
+		0F3AD20B1FC23C3E002E5B04 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3AD20A1FC23C3E002E5B04 /* Scheduler.swift */; };
 		OBJ_1000 /* TLS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "TLS::TLS::Product" /* TLS.framework */; };
 		OBJ_1001 /* Sockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Sockets::Sockets::Product" /* Sockets.framework */; };
 		OBJ_1002 /* URI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Engine::URI::Product" /* URI.framework */; };
@@ -802,7 +804,6 @@
 		OBJ_856 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_694 /* Package.swift */; };
 		OBJ_862 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_698 /* Package.swift */; };
 		OBJ_868 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_720 /* Package.swift */; };
-		OBJ_874 /* Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Git.swift */; };
 		OBJ_875 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Repositories.swift */; };
 		OBJ_876 /* ResultOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ResultOperation.swift */; };
 		OBJ_877 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* main.swift */; };
@@ -2887,6 +2888,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F3AD2061FC23865002E5B04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		0F3AD20A1FC23C3E002E5B04 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		"BCrypt::BCrypt::Product" /* BCrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BCrypt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Bits::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Console::Product" /* Console.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Console.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3444,7 +3447,6 @@
 		OBJ_77 /* OID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OID.swift; sourceTree = "<group>"; };
 		OBJ_78 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		OBJ_79 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
-		OBJ_8 /* Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Git.swift; sourceTree = "<group>"; };
 		OBJ_80 /* Signature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
 		OBJ_81 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		OBJ_82 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
@@ -5194,7 +5196,7 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -5204,7 +5206,6 @@
 				OBJ_14 /* Dependencies */,
 				OBJ_721 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_502 /* Email */ = {
@@ -5788,10 +5789,11 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* Git.swift */,
 				OBJ_9 /* Repositories.swift */,
+				0F3AD20A1FC23C3E002E5B04 /* Scheduler.swift */,
 				OBJ_10 /* ResultOperation.swift */,
 				OBJ_11 /* main.swift */,
+				0F3AD2061FC23865002E5B04 /* App.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -7035,7 +7037,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_721 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -7993,8 +7995,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_874 /* Git.swift in Sources */,
 				OBJ_875 /* Repositories.swift in Sources */,
+				0F3AD2071FC23865002E5B04 /* App.swift in Sources */,
+				0F3AD20B1FC23C3E002E5B04 /* Scheduler.swift in Sources */,
 				OBJ_876 /* ResultOperation.swift in Sources */,
 				OBJ_877 /* main.swift in Sources */,
 			);
