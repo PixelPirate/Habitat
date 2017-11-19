@@ -1,0 +1,39 @@
+#extend("Base")
+
+#export("head") {
+<title>#(name)</title>
+}
+
+#export("body") {
+<form action="/plan/#(index)" method="post">
+<label for="name">Name</label>
+<input id="name" name="name" type="text", value="#(name)" required><br>
+
+<label for="repositoryURL">Repository URL</label>
+<input id="repositoryURL" name="repositoryURL" type="text" value="#(repositoryURL)" required><br>
+
+<label for="branch">Branch name</label>
+<input id="branch" name="branch" type="text" value="#(branch)" required><br>
+
+<label for="launch">Launch script path</label>
+<input id="launch" name="launch" type="text" value="#(launch)" required><br>
+
+<label for="build">Build script path</label>
+<input id="build" name="build" type="text" value="#(build)" required><br>
+
+<label for="environment">Environment</label>
+<input id="environment" name="environment" type="text" value="#(environment)" required><br>
+
+<input type="submit" value="Submit">
+</form>
+
+<button onclick="var xhr = new XMLHttpRequest();
+xhr.open('DELETE', '/plan/#(index)', true);
+xhr.onload = function () {
+    if (xhr.readyState == 4 && xhr.status == '200') {
+        window.location = '/';
+    } else {
+    }
+}
+xhr.send(null);">Löschen</button>
+}

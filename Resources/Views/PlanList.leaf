@@ -1,0 +1,12 @@
+#extend("Base")
+
+#export("head") {
+<title>Plans</title>
+}
+
+#export("body") {
+#loop(plans, "plan") {
+<p><a href="plan/#(index)">#(plan.name)</a></p>
+}
+<a href="new-plan">Neu</a>
+}

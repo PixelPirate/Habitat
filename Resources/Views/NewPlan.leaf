@@ -1,0 +1,29 @@
+#extend("Base")
+
+#export("head") {
+<title>New Plan</title>
+}
+
+#export("body") {
+<form action="/plan" method="post">
+<label for="name">Name</label>
+<input id="name" name="name" type="text" required><br>
+
+<label for="repositoryURL">Repository URL</label>
+<input id="repositoryURL" name="repositoryURL" type="text" required><br>
+
+<label for="branch">Branch name</label>
+<input id="branch" name="branch" type="text" required><br>
+
+<label for="launch">Launch script path</label>
+<input id="launch" name="launch" type="text" required><br>
+
+<label for="build">Build script path</label>
+<input id="build" name="build" type="text" required><br>
+
+<label for="environment">Environment</label>
+<input id="environment" name="environment" type="text" required><br>
+
+<input type="submit" value="Submit">
+</form>
+}

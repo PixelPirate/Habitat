@@ -138,7 +138,7 @@ final class Plan: Codable {
         self.environment = environment
     }
 
-    init(name: String, repository: Repository, build: Script, launch: Script, environment: [String: String]) throws {
+    init(name: String, repository: Repository, build: Script, launch: Script, environment: [String: String]) {
         self.name = name
         self.repository = repository
         self.head = .notYetCheckedOut
@@ -245,7 +245,12 @@ struct AssetLocator {
 
 struct Repository: Codable {
     let url: URL
-    let branch = "master"
+    let branch: String
+    
+    init(url: URL, branch: String = "master") {
+        self.url = url
+        self.branch = branch
+    }
 
     func head(_ locator: AssetLocator) throws -> Commit {
         let manager = RepositoryManager()
