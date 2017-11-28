@@ -6,10 +6,14 @@ final class Scheduler {
     let timer: DispatchSourceTimer
     var plans: [Plan] = []
     var root: URL
-    private(set) var state: State = .idle
+    private(set) var state: State = .idle {
+        didSet {
+            NSLog("New state: %@", String(describing: state))
+        }
+    }
     
     init(root: URL, plans: [Plan]) {
-        self.root = root
+        self.root = root // TODO: Not allowed to be a relative path. Triggers errors with Git.
         self.plans = plans
         operationQueue = OperationQueue()
         operationQueue.underlyingQueue = queue
@@ -28,6 +32,10 @@ final class Scheduler {
     ///
     /// **Note**: Has to be performed on `Scheduler.queue`.
     private func updateIfNeeded() {
+        guard state == .idle else { // TODO: Be a little smarter about this.
+            return
+        }
+
         let updates = plans.filter { $0.needsUpdate }
                            .flatMap { $0.makeUpdate(AssetLocator(root: root, plan: $0)) }
         guard !updates.isEmpty else {
@@ -38,10 +46,8 @@ final class Scheduler {
         }
         updates.forEach { completion.addDependency($0) }
         state = .updating
-        operationQueue.addOperation(completion)
-        operationQueue.addOperations(updates, waitUntilFinished: false)
-        let dependencies = updates.flatMap { $0.dependencies }
-        operationQueue.addOperations(dependencies, waitUntilFinished: false)
+        operationQueue.addOperation(includingDependencies: completion)
+        // TODO: Handle errors in operation and dependencies.
     }
     
     private func update(for plan: Plan) -> Operation? {

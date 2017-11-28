@@ -53,6 +53,8 @@ final class ResultOperation<Value>: AsynchronousOperation {
         } catch let error {
             result = .Error(error)
         }
+
+        finish()
     }
 }
 

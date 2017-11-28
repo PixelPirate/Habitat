@@ -104,6 +104,13 @@ extension Plan {
                 try container.encode(commit, forKey: .commit)
             }
         }
+
+        static func from(repository: Git2Swift.Repository) throws -> Head{
+            guard let hash = try repository.head().targetCommit().oid.sha() else {
+                throw HabitatError.notAGitRepository(repository.url)
+            }
+            return Head(from: Commit(hash: hash))
+        }
     }
 }
 
@@ -163,6 +170,7 @@ final class Plan: Codable {
                 throw HabitatError.invalidConfiguration
             }
             try repo.head().checkout(branch: repo.branches.get(name: self.repository.branch))
+            self.head = try Head.from(repository: repo)
         }
         return update
     }
